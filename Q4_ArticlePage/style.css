@@ -1,0 +1,90 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+  font-family: "Georgia", serif;
+  background-color: #f8fafc;
+  color: #1e293b;
+  line-height: 1.8;
+  padding: 0 1rem;
+}
+
+/* Header */
+header {
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+  background-color: #0f172a;
+  color: #f8fafc;
+}
+
+header h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.subheading {
+  font-size: 1rem;
+  color: #a5b4fc;
+}
+
+/* Main Article */
+main {
+  max-width: 800px;
+  margin: 3rem auto;
+  background: #ffffff;
+  padding: 2.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Paragraph Styling */
+article p {
+  margin-bottom: 1.5rem; /* consistent spacing between paragraphs */
+  font-size: 1.05rem;
+  text-align: justify;
+  color: #334155;
+}
+
+/* ::first-letter styling */
+article p::first-letter {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #0f172a;
+}
+
+/* ::first-line styling */
+article p::first-line {
+  font-weight: bold;
+}
+
+/* Highlighted text (<mark>) */
+mark {
+  background-color: #fde68a;
+  padding: 0.1rem 0.3rem;
+  border-radius: 4px;
+  color: #92400e;
+}
+
+/* Blockquote styling */
+blockquote {
+  border-left: 5px solid #3b82f6;
+  background-color: #eff6ff;
+  padding: 1rem 1.5rem;
+  font-style: italic;
+  color: #1e3a8a;
+  margin: 2rem 0;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  background-color: #0f172a;
+  color: #f8fafc;
+  padding: 1rem;
+  font-size: 0.9rem;
+}

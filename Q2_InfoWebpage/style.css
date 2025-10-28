@@ -1,0 +1,121 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  line-height: 1.6;
+}
+
+/* Header Styling */
+header {
+  background: #1a1a1a;
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+nav {
+  margin-top: 0.5rem;
+}
+
+nav a {
+  color: #10b981;
+  text-decoration: none;
+  margin: 0 1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #fff;
+}
+
+/* Section Base Style */
+.section {
+  padding: 5rem 10%;
+  text-align: center;
+  border-bottom: 3px solid rgba(255, 255, 255, 0.1);
+}
+
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.section p {
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: auto;
+}
+
+/* Overview Section - Solid Color Background */
+.overview {
+  background: #0f172a;
+}
+
+/* Landmarks Section - Parallax Background */
+.landmarks {
+  background: url("https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1600&q=80")
+    center/cover fixed no-repeat;
+}
+
+/* Culture Section - Linear Gradient */
+.culture {
+  background: linear-gradient(135deg, #3b82f6, #9333ea);
+}
+
+/* Food Section - Radial Gradient + Parallax */
+.food {
+  background: radial-gradient(circle at center, #f97316, #7c2d12);
+  background-attachment: fixed;
+}
+
+/* Footer Styling */
+footer {
+  background: #111;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+/* Spacing and Borders */
+.section {
+  margin-bottom: 0;
+  border-top: 4px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .section {
+    padding: 3rem 5%;
+  }
+
+  .section h2 {
+    font-size: 1.6rem;
+  }
+
+  .section p {
+    font-size: 1rem;
+  }
+
+  nav a {
+    display: inline-block;
+    margin: 0.5rem;
+  }
+}
