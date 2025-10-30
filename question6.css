@@ -1,0 +1,119 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+header {
+    background-color: rgba(44, 62, 80, 0.9);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+}
+
+main {
+    padding: 4rem 2rem;
+}
+
+/* Flexbox container - arranges boxes horizontally */
+.transform-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+/* Container for each transformation demonstration */
+.transform-box {
+    text-align: center;
+}
+
+/* Base box styles */
+.box {
+    width: 150px;
+    height: 150px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease; /* Smooth transition for all transformations */
+    cursor: pointer;
+}
+
+.box p {
+    font-weight: bold;
+    color: #2c3e50;
+    font-size: 1.1rem;
+}
+
+/* Label under each box */
+.label {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* ROTATE TRANSFORMATION */
+/* Rotates the box 45 degrees on hover */
+.rotate-box:hover {
+    transform: rotate(45deg);
+    background-color: #3498db;
+}
+
+.rotate-box:hover p {
+    color: white;
+}
+
+/* SCALE TRANSFORMATION */
+/* Enlarges the box 1.3 times on hover */
+.scale-box:hover {
+    transform: scale(1.3);
+    background-color: #e74c3c;
+}
+
+.scale-box:hover p {
+    color: white;
+}
+
+/* TRANSLATE TRANSFORMATION */
+/* Moves the box 30px up and 20px right on hover */
+.translate-box:hover {
+    transform: translate(20px, -30px);
+    background-color: #2ecc71;
+}
+
+.translate-box:hover p {
+    color: white;
+}
+
+/* SKEW TRANSFORMATION */
+/* Skews the box on hover */
+.skew-box:hover {
+    transform: skew(20deg, 5deg);
+    background-color: #f39c12;
+}
+
+.skew-box:hover p {
+    color: white;
+}
+
+footer {
+    background-color: rgba(44, 62, 80, 0.9);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}

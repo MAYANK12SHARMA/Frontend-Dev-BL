@@ -1,0 +1,98 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f0f0f0;
+}
+
+/* Header styles with text-shadow */
+header {
+    background-color: #34495e;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+}
+
+header h1 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for depth */
+}
+
+/* Main content area */
+main {
+    padding: 4rem 2rem;
+}
+
+/* Flexbox container for cards - arranges cards in a single row */
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+/* Base card styles */
+.card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    transition: all 0.3s ease; /* Smooth animation for hover effect */
+}
+
+.card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Text shadow on headings for depth */
+}
+
+.card p {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Card 1 - Subtle shadow */
+.card-1 {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-1:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Larger shadow on hover - lift effect */
+    transform: translateY(-8px);
+}
+
+/* Card 2 - Medium shadow with spread */
+.card-2 {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-2:hover {
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25); /* Enhanced shadow on hover */
+    transform: translateY(-8px);
+}
+
+/* Card 3 - Colored shadow */
+.card-3 {
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+.card-3:hover {
+    box-shadow: 0 16px 32px rgba(52, 152, 219, 0.5); /* Colored shadow intensifies */
+    transform: translateY(-8px);
+}
+
+/* Footer styles */
+footer {
+    background-color: #34495e;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}

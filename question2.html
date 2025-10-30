@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Height and Width Practice Layout</title>
+    <link rel="stylesheet" href="question2.css">
+</head>
+<body>
+    <header>
+        <h1>Height and Width Practice Layout</h1>
+    </header>
+    
+    <main>
+        <section class="box-container">
+            <!-- Box with pixel dimensions -->
+            <div class="box box-px">
+                <h2>Pixels (px)</h2>
+                <p>Width: 250px<br>Height: 200px</p>
+            </div>
+            
+            <!-- Box with percentage and viewport height -->
+            <div class="box box-percent-vh">
+                <h2>Percentage & vh</h2>
+                <p>Width: 30%<br>Min-height: 40vh</p>
+            </div>
+            
+            <!-- Box with em units and overflow -->
+            <div class="box box-em">
+                <h2>Em Units</h2>
+                <p>Width: 20em<br>Max-width: 300px<br>Height: 15em</p>
+                <p>This box demonstrates overflow property when content exceeds the defined dimensions.</p>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 CSS Demonstration</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,173 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #ecf0f1;
+}
+
+header {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+}
+
+main {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.selector-section {
+    background-color: white;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.selector-section h2 {
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+}
+
+/* ATTRIBUTE SELECTORS */
+/* Target inputs with type='text' */
+input[type="text"] {
+    background-color: #e8f4f8;
+    border: 2px solid #3498db;
+}
+
+/* Target inputs with type='email' */
+input[type="email"] {
+    background-color: #fef5e7;
+    border: 2px solid #f39c12;
+}
+
+/* Target inputs with type='password' */
+input[type="password"] {
+    background-color: #fadbd8;
+    border: 2px solid #e74c3c;
+}
+
+form input {
+    display: block;
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+}
+
+/* Target links that start with 'https' */
+a[href^="https"] {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+/* Target links that start with 'http://' (not https) */
+a[href^="http://"] {
+    color: #e67e22;
+}
+
+.links a {
+    display: block;
+    margin: 0.5rem 0;
+    text-decoration: none;
+    padding: 0.5rem;
+}
+
+/* PSEUDO-CLASSES */
+/* :hover pseudo-class */
+.item-list li:hover {
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+}
+
+/* :nth-child() pseudo-class - style odd items */
+.item-list li:nth-child(odd) {
+    background-color: #ecf0f1;
+}
+
+/* :nth-child() pseudo-class - style even items */
+.item-list li:nth-child(even) {
+    background-color: #d5dbdb;
+}
+
+/* :first-child pseudo-class */
+.item-list li:first-child {
+    font-weight: bold;
+}
+
+.item-list {
+    list-style: none;
+}
+
+.item-list li {
+    padding: 1rem;
+    margin: 0.5rem 0;
+    transition: all 0.3s ease;
+}
+
+/* :focus pseudo-class */
+input:focus {
+    outline: 3px solid #9b59b6;
+    outline-offset: 2px;
+}
+
+/* PSEUDO-ELEMENTS */
+/* ::before pseudo-element - adds content before each list item */
+.item-list li::before {
+    content: "→ ";
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+/* ::after pseudo-element - adds content after links */
+.links a::after {
+    content: " ↗";
+    font-size: 0.8rem;
+}
+
+/* COMBINATORS */
+/* Child combinator (>) - selects direct children only */
+.parent > p {
+    color: #e74c3c;
+    font-weight: bold;
+    padding: 1rem;
+    background-color: #fadbd8;
+    margin: 0.5rem 0;
+}
+
+/* Descendant combinator (space) - selects all descendants */
+.parent p {
+    border-left: 4px solid #3498db;
+}
+
+/* Adjacent sibling combinator (+) - selects immediately following sibling */
+.parent + .adjacent {
+    color: #27ae60;
+    background-color: #d5f4e6;
+    padding: 1rem;
+    margin: 0.5rem 0;
+}
+
+/* General sibling combinator (~) - selects all following siblings */
+.parent ~ p {
+    border: 2px dashed #95a5a6;
+    padding: 1rem;
+    margin: 0.5rem 0;
+}
+
+footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}

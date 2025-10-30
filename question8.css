@@ -1,0 +1,145 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #ecf0f1;
+}
+
+header {
+    background-color: #34495e;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+}
+
+main {
+    padding: 3rem 2rem;
+}
+
+/* Flexbox container to center demonstrations */
+.box-model-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+/* Individual demonstration container */
+.demonstration {
+    text-align: center;
+}
+
+.demonstration h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+.description {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    margin-bottom: 1.5rem;
+    max-width: 300px;
+}
+
+/* Box model visualization */
+.box-model {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    margin: 2rem auto;
+}
+
+/* Content layer - innermost */
+.content {
+    width: 100px;
+    height: 100px;
+    background-color: #3498db; /* Blue for content */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    z-index: 4;
+}
+
+/* Padding layer - surrounds content */
+.padding-layer {
+    width: 140px;
+    height: 140px;
+    background-color: #2ecc71; /* Green for padding */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    color: white;
+    font-weight: bold;
+    padding-top: 5px;
+    z-index: 3;
+}
+
+/* Border layer - surrounds padding */
+.border-layer {
+    width: 180px;
+    height: 180px;
+    background-color: #e74c3c; /* Red for border */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    color: white;
+    font-weight: bold;
+    padding-top: 5px;
+    z-index: 2;
+}
+
+/* Margin layer - outermost */
+.margin-layer {
+    width: 100%;
+    height: 100%;
+    outline: 3px dashed #95a5a6; /* Outline to show margin */
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    color: #34495e;
+    font-weight: bold;
+    padding-top: 5px;
+    z-index: 1;
+}
+
+/* Default box model - content-box */
+.default-box {
+    box-sizing: content-box; /* Width/height applies to content only */
+}
+
+/* Border-box model - includes padding and border in width/height */
+.border-box {
+    box-sizing: border-box; /* Width/height includes padding and border */
+}
+
+footer {
+    background-color: #34495e;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}

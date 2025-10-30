@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Model Exploration</title>
+    <link rel="stylesheet" href="question8.css">
+</head>
+<body>
+    <header>
+        <h1>CSS Box Model Exploration</h1>
+    </header>
+    
+    <main>
+        <section class="box-model-container">
+            <!-- Default box model -->
+            <div class="demonstration">
+                <h2>Default Box Model</h2>
+                <p class="description">Width and height apply only to the content. Padding and border are added outside.</p>
+                <div class="box-model default-box">
+                    <div class="content">Content</div>
+                    <div class="padding-layer">Padding</div>
+                    <div class="border-layer">Border</div>
+                    <div class="margin-layer">Margin</div>
+                </div>
+            </div>
+            
+            <!-- Border-box model -->
+            <div class="demonstration">
+                <h2>Box-Sizing: Border-Box</h2>
+                <p class="description">Width and height include content, padding, and border. More predictable sizing.</p>
+                <div class="box-model border-box">
+                    <div class="content">Content</div>
+                    <div class="padding-layer">Padding</div>
+                    <div class="border-layer">Border</div>
+                    <div class="margin-layer">Margin</div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Box Model Demonstration</p>
+    </footer>
+</body>
+</html>

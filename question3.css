@@ -1,0 +1,86 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* Fixed header */
+header {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+/* Main content area */
+main {
+    margin-top: 80px; /* Space for fixed header */
+    margin-bottom: 60px; /* Space for fixed footer */
+}
+
+/* Linear gradient section */
+.linear-gradient-section {
+    /* Linear gradient from top to bottom */
+    background: linear-gradient(to bottom, #667eea, #764ba2, #f093fb);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+}
+
+/* Radial gradient section with parallax effect */
+.radial-gradient-section {
+    /* Radial gradient from center */
+    background: radial-gradient(circle, #ff6b6b, #ee5a6f, #c44569, #5f27cd);
+    background-attachment: fixed; /* Parallax-like effect */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+}
+
+/* Content styling for both sections */
+.content {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 3rem;
+    border-radius: 10px;
+    max-width: 600px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.content h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.content p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.8;
+}
+
+/* Fixed footer */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 100;
+}
