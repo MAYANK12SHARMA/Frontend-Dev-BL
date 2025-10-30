@@ -1,0 +1,31 @@
+<!-- Task 14: Embed External Website with iframe -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 14 - External Website Embed</title>
+</head>
+<body>
+    <h1>Embedded External Website</h1>
+    
+    <!-- iframe embedding Wikipedia -->
+    <iframe 
+        src="https://www.wikipedia.org" 
+        width="90%" 
+        height="500" 
+        title="Wikipedia Website" 
+        frameborder="0">
+        Your browser does not support iframes.
+    </iframe>
+    
+    <br><br>
+    
+    <!-- Explanation paragraph -->
+    <p>
+        <strong>Important Note:</strong> Some websites may not allow embedding for security reasons. 
+        Many sites use X-Frame-Options or Content-Security-Policy headers to prevent their 
+        content from being displayed in iframes. This is done to protect against clickjacking 
+        attacks and maintain control over how their content is presented.
+    </p>
+</body>
+</html>

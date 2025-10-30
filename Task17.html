@@ -1,0 +1,32 @@
+<!-- Task 17: Form with iframe to display result -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 17 - Form with iframe</title>
+</head>
+<body>
+    <h1>Submit Form</h1>
+    
+    <!-- Form that targets an iframe for displaying results -->
+    <form action="result.html" method="get" target="resultFrame">
+        <label for="usertext">Enter text:</label><br>
+        <input type="text" id="usertext" name="usertext" required><br><br>
+        
+        <input type="submit" value="Submit">
+    </form>
+    
+    <br>
+    
+    <!-- iframe to display the result page -->
+    <h2>Result:</h2>
+    <iframe 
+        name="resultFrame" 
+        src="" 
+        width="80%" 
+        height="200" 
+        title="Result Frame" 
+        frameborder="1">
+    </iframe>
+</body>
+</html>

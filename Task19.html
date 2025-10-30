@@ -1,0 +1,67 @@
+<!-- Task 19: Form Security Attributes -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 19 - Form Security</title>
+</head>
+<body>
+    <h1>Secure Form Example</h1>
+    
+    <!-- Form with autocomplete disabled and required fields -->
+    <form action="#" method="post" autocomplete="off">
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username" required><br><br>
+        
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+        
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+        
+        <label for="ssn">Social Security Number:</label><br>
+        <input type="text" id="ssn" name="ssn" required><br><br>
+        
+        <input type="submit" value="Submit">
+    </form>
+    
+    <hr>
+    
+    <!-- Security explanation -->
+    <h2>Why Turn Off Autocomplete?</h2>
+    <p>
+        <strong>Security Benefits of autocomplete="off":</strong>
+    </p>
+    <ul>
+        <li>
+            <strong>Prevents Data Leakage:</strong> Disabling autocomplete prevents browsers 
+            from storing sensitive information like passwords, credit card numbers, or personal 
+            identification data that could be accessed by unauthorized users on shared computers.
+        </li>
+        <li>
+            <strong>Protection Against Shoulder Surfing:</strong> When autocomplete is disabled, 
+            previously entered data won't automatically appear in dropdown suggestions, reducing 
+            the risk of sensitive information being visible to people nearby.
+        </li>
+        <li>
+            <strong>Reduces Browser Vulnerability Risks:</strong> If a browser or system is 
+            compromised, stored autocomplete data could be extracted. Disabling it minimizes 
+            this attack surface.
+        </li>
+        <li>
+            <strong>Compliance Requirements:</strong> Many security standards and regulations 
+            (like PCI DSS for payment data) recommend or require disabling autocomplete for 
+            sensitive fields to protect user privacy.
+        </li>
+        <li>
+            <strong>Multi-User Environment Protection:</strong> On shared or public computers, 
+            autocomplete data could expose previous users' sensitive information to subsequent users.
+        </li>
+    </ul>
+    
+    <p>
+        <em>Note: While autocomplete=off improves security, it should be combined with other 
+        security measures like HTTPS, proper input validation, and secure password policies.</em>
+    </p>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!-- Task 7: Login Form with CSRF Token -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 7 - Login Form</title>
+</head>
+<body>
+    <h1>Login Form</h1>
+    <!-- Login form -->
+    <form action="#" method="post">
+        <!-- Username field -->
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username" required><br><br>
+        
+        <!-- Password field -->
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+        
+        <!-- Hidden CSRF token field -->
+        <!-- CSRF (Cross-Site Request Forgery) token is a security mechanism that helps prevent -->
+        <!-- unauthorized commands from being transmitted from a user that the web application trusts. -->
+        <!-- It ensures that form submissions are coming from legitimate sources and not malicious sites. -->
+        <input type="hidden" name="csrf_token" value="abc123xyz789token">
+        
+        <!-- Submit button -->
+        <input type="submit" value="Login">
+    </form>
+    
+    <p><em>Note: The CSRF token is hidden and sent with form submission for security purposes.</em></p>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!-- Task 4: Frameset Layout (Note: Framesets are deprecated in HTML5) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 4 - Frameset Layout</title>
+</head>
+
+<!-- Frameset divides the page into rows: 30% for navigation, 70% for content -->
+<frameset rows="30%,70%">
+    <!-- Top frame for navigation -->
+    <frame src="navigation.html" name="topFrame" title="Navigation Frame">
+    
+    <!-- Bottom frame for welcome message -->
+    <frame src="welcome.html" name="bottomFrame" title="Content Frame">
+    
+    <!-- Fallback for browsers that don't support frames -->
+    <noframes>
+        <body>
+            <p>Your browser does not support frames. Please upgrade to a modern browser.</p>
+        </body>
+    </noframes>
+</frameset>
+
+</html> 

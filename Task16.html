@@ -1,0 +1,45 @@
+<!-- Task 16: URI Encoding Demonstration -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 16 - URI Encoding</title>
+</head>
+<body>
+    <h1>URI Encoding Demonstration</h1>
+    
+    <h2>Original URL (Incorrect):</h2>
+    <p>https://example.com/search?query=HTML & CSS</p>
+    
+    <h2>Encoded URL (Correct):</h2>
+    <!-- URL with proper encoding: space = %20, & = %26 -->
+    <p>
+        <a href="https://example.com/search?query=HTML%20%26%20CSS">
+            https://example.com/search?query=HTML%20%26%20CSS
+        </a>
+    </p>
+    
+    <h2>Explanation:</h2>
+    <p>
+        In URLs, special characters need to be encoded to ensure proper transmission:<br>
+        - Space is encoded as <strong>%20</strong><br>
+        - Ampersand (&amp;) is encoded as <strong>%26</strong><br>
+        - Other special characters also have their percent-encoded equivalents
+    </p>
+    
+    <h2>More Examples:</h2>
+    <ul>
+        <li>Space: " " → %20</li>
+        <li>Plus: "+" → %2B</li>
+        <li>Hash: "#" → %23</li>
+        <li>Question mark: "?" → %3F</li>
+        <li>Equals: "=" → %3D</li>
+    </ul>
+    
+    <p>
+        <a href="https://example.com/search?topic=Web%20Development%20%26%20Design">
+            Example Link with Multiple Encoded Characters
+        </a>
+    </p>
+</body>
+</html>

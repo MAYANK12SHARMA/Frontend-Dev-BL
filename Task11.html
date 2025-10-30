@@ -1,0 +1,36 @@
+<!-- Task 11: Student Information Form with Dropdown -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 11 - Student Information</title>
+</head>
+<body>
+    <h1>Student Information Form</h1>
+    
+    <!-- Student information form -->
+    <form action="#" method="post">
+        <!-- Name field -->
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <!-- Roll Number field -->
+        <label for="rollnumber">Roll Number:</label><br>
+        <input type="text" id="rollnumber" name="rollnumber" required><br><br>
+        
+        <!-- Course dropdown with default disabled option -->
+        <label for="course">Course:</label><br>
+        <select id="course" name="course" required>
+            <option value="" disabled selected>Select Course</option>
+            <option value="btech">B.Tech - Computer Science</option>
+            <option value="bca">BCA - Bachelor of Computer Applications</option>
+            <option value="mca">MCA - Master of Computer Applications</option>
+            <option value="bsc">B.Sc - Information Technology</option>
+            <option value="mtech">M.Tech - Software Engineering</option>
+        </select><br><br>
+        
+        <!-- Submit button -->
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

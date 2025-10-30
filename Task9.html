@@ -1,0 +1,26 @@
+<!-- Task 9: File Upload Form -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 9 - File Upload</title>
+</head>
+<body>
+    <h1>Image Upload Form</h1>
+    
+    <!-- File upload form with accept attribute to restrict file types -->
+    <form action="#" method="post" enctype="multipart/form-data">
+        <label for="fileupload">Choose an image file:</label><br>
+        <input type="file" id="fileupload" name="fileupload" accept=".jpg,.png" required><br><br>
+        
+        <!-- Submit button -->
+        <input type="submit" value="Upload File">
+    </form>
+    
+    <!-- Information about allowed file types -->
+    <p>
+        <strong>Note:</strong> Only .jpg and .png image files are allowed for upload. 
+        Please ensure your file is in one of these formats before submitting.
+    </p>
+</body>
+</html>
