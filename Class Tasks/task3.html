@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step Goal Tracker</title>
+    <link rel="stylesheet" href="task3.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Step Goal Tracker</h2>
+        
+        <label for="steps">Enter Steps:</label>
+        <input type="number" id="steps" placeholder="Enter your steps">
+        
+        <button onclick="checkGoal()">Check Progress</button>
+        
+        <div id="result"></div>
+        
+        <div class="progress-circle">
+            <svg width="150" height="150">
+                <circle cx="75" cy="75" r="65" class="bg-circle"></circle>
+                <circle cx="75" cy="75" r="65" class="progress-circle-fill" id="progressCircle"></circle>
+            </svg>
+            <div class="progress-text" id="progressText">0%</div>
+        </div>
+    </div>
+    
+    <script src="task3.js"></script>
+</body>
+</html>
