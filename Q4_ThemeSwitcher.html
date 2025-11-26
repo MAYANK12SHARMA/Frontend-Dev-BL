@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Switcher</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 50px;
+            transition: all 0.3s ease;
+        }
+        body.light {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        body.dark {
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+        body.blue {
+            background-color: #1e3a8a;
+            color: #ffffff;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        .light-btn {
+            background-color: #f0f0f0;
+            color: #000;
+        }
+        .dark-btn {
+            background-color: #333;
+            color: #fff;
+        }
+        .blue-btn {
+            background-color: #1e3a8a;
+            color: #fff;
+        }
+    </style>
+</head>
+<body class="light" data-theme="light">
+    <div class="container">
+        <h1>Theme Switcher</h1>
+        <p>Click a button to change the theme:</p>
+        <button class="light-btn" id="lightBtn">Light Theme</button>
+        <button class="dark-btn" id="darkBtn">Dark Theme</button>
+        <button class="blue-btn" id="blueBtn">Blue Theme</button>
+        <p>Current theme: <strong id="currentTheme">Light</strong></p>
+    </div>
+    <script src="Q4_ThemeSwitcher.js"></script>
+</body>
+</html>

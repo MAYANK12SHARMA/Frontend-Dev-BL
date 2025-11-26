@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            font-size: 16px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        #counter {
+            margin: 10px 0;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .normal {
+            color: green;
+        }
+        .warning {
+            color: orange;
+        }
+        .danger {
+            color: red;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Live Character Counter</h1>
+    <textarea id="textArea" placeholder="Type your text here..."></textarea>
+    <div id="counter" class="normal">Remaining characters: 100</div>
+    <button id="resetBtn">Reset</button>
+    <script src="Q2_CharacterCounter.js"></script>
+</body>
+</html>
