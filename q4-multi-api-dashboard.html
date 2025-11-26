@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q4 - Multi API Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #333;
+        }
+        .warning {
+            background-color: #fff3cd;
+            color: #856404;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            text-align: center;
+            display: none;
+        }
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .card-title {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        .card-value {
+            font-size: 48px;
+            font-weight: bold;
+            color: #333;
+        }
+        .card-users .card-value {
+            color: #4CAF50;
+        }
+        .card-orders .card-value {
+            color: #2196F3;
+        }
+        .card-products .card-value {
+            color: #FF9800;
+        }
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+            border-radius: 4px;
+        }
+        .skeleton-title {
+            height: 20px;
+            width: 60%;
+            margin: 0 auto 15px;
+        }
+        .skeleton-value {
+            height: 60px;
+            width: 80%;
+            margin: 0 auto;
+        }
+        @keyframes loading {
+            0% {
+                background-position: 200% 0;
+            }
+            100% {
+                background-position: -200% 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Dashboard</h1>
+        <div class="warning" id="warning">Some data could not be loaded.</div>
+        <div class="dashboard" id="dashboard">
+            <div class="card card-users">
+                <div class="card-title skeleton skeleton-title"></div>
+                <div class="card-value skeleton skeleton-value"></div>
+            </div>
+            <div class="card card-orders">
+                <div class="card-title skeleton skeleton-title"></div>
+                <div class="card-value skeleton skeleton-value"></div>
+            </div>
+            <div class="card card-products">
+                <div class="card-title skeleton skeleton-title"></div>
+                <div class="card-value skeleton skeleton-value"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function loadDashboard() {
+            const usersPromise = fetch('http://localhost:3004/users').then(res => res.json());
+            const ordersPromise = fetch('http://localhost:3004/orders').then(res => res.json());
+            const productsPromise = fetch('http://localhost:3004/products').then(res => res.json());
+
+            Promise.all([usersPromise, ordersPromise, productsPromise])
+                .then(([users, orders, products]) => {
+                    displayDashboard({
+                        users: users.length,
+                        orders: orders.length,
+                        products: products.length
+                    });
+                })
+                .catch(error => {
+                    Promise.allSettled([usersPromise, ordersPromise, productsPromise])
+                        .then(results => {
+                            const data = {
+                                users: results[0].status === 'fulfilled' ? results[0].value.length : 0,
+                                orders: results[1].status === 'fulfilled' ? results[1].value.length : 0,
+                                products: results[2].status === 'fulfilled' ? results[2].value.length : 0
+                            };
+                            displayDashboard(data, true);
+                        });
+                });
+        }
+
+        function displayDashboard(data, showWarning = false) {
+            if (showWarning) {
+                document.getElementById('warning').style.display = 'block';
+            }
+
+            document.getElementById('dashboard').innerHTML = `
+                <div class="card card-users">
+                    <div class="card-title">Total Users</div>
+                    <div class="card-value">${data.users}</div>
+                </div>
+                <div class="card card-orders">
+                    <div class="card-title">Total Orders</div>
+                    <div class="card-value">${data.orders}</div>
+                </div>
+                <div class="card card-products">
+                    <div class="card-title">Total Products</div>
+                    <div class="card-value">${data.products}</div>
+                </div>
+            `;
+        }
+
+        loadDashboard();
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+{
+  "timetable": [
+    {
+      "id": 1,
+      "day": "Monday",
+      "subject": "Mathematics",
+      "faculty": "Dr. Smith",
+      "time": "9:00 AM - 10:00 AM"
+    },
+    {
+      "id": 2,
+      "day": "Monday",
+      "subject": "Physics",
+      "faculty": "Prof. Johnson",
+      "time": "10:15 AM - 11:15 AM"
+    },
+    {
+      "id": 3,
+      "day": "Tuesday",
+      "subject": "Chemistry",
+      "faculty": "Dr. Williams",
+      "time": "9:00 AM - 10:00 AM"
+    },
+    {
+      "id": 4,
+      "day": "Tuesday",
+      "subject": "English",
+      "faculty": "Ms. Brown",
+      "time": "11:30 AM - 12:30 PM"
+    },
+    {
+      "id": 5,
+      "day": "Wednesday",
+      "subject": "Computer Science",
+      "faculty": "Dr. Davis",
+      "time": "9:00 AM - 10:00 AM"
+    },
+    {
+      "id": 6,
+      "day": "Thursday",
+      "subject": "Biology",
+      "faculty": "Prof. Miller",
+      "time": "10:15 AM - 11:15 AM"
+    },
+    {
+      "id": 7,
+      "day": "Friday",
+      "subject": "History",
+      "faculty": "Dr. Wilson",
+      "time": "9:00 AM - 10:00 AM"
+    }
+  ]
+}

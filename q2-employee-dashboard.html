@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q2 - Employee Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            margin-bottom: 30px;
+            color: #333;
+        }
+        .employee-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .employee-table th,
+        .employee-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .employee-table th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+            color: #333;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .status-active {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .status-inactive {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .toggle-btn {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .toggle-btn-active {
+            background-color: #28a745;
+            color: white;
+        }
+        .toggle-btn-inactive {
+            background-color: #dc3545;
+            color: white;
+        }
+        .toggle-btn:hover {
+            opacity: 0.8;
+        }
+        .toggle-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .error-message {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            display: none;
+        }
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Employee Status Dashboard</h1>
+        <div class="error-message" id="errorMessage"></div>
+        <div id="content"></div>
+    </div>
+
+    <script>
+        function loadEmployees() {
+            document.getElementById('content').innerHTML = '<div class="loading">Loading employees...</div>';
+            
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', 'http://localhost:3002/employees', true);
+            
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    const employees = JSON.parse(xhr.responseText);
+                    displayEmployees(employees);
+                } else {
+                    document.getElementById('content').innerHTML = '<div class="error-message" style="display:block;">Failed to load employees</div>';
+                }
+            };
+            
+            xhr.onerror = function() {
+                document.getElementById('content').innerHTML = '<div class="error-message" style="display:block;">Network error</div>';
+            };
+            
+            xhr.send();
+        }
+
+        function displayEmployees(employees) {
+            let html = `
+                <table class="employee-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+            
+            employees.forEach(emp => {
+                const statusClass = emp.status === 'active' ? 'status-active' : 'status-inactive';
+                const btnClass = emp.status === 'active' ? 'toggle-btn-active' : 'toggle-btn-inactive';
+                const btnText = emp.status === 'active' ? 'Deactivate' : 'Activate';
+                
+                html += `
+                    <tr id="row-${emp.id}">
+                        <td>${emp.id}</td>
+                        <td>${emp.name}</td>
+                        <td><span class="status-badge ${statusClass}" id="status-${emp.id}">${emp.status}</span></td>
+                        <td>
+                            <button class="toggle-btn ${btnClass}" id="btn-${emp.id}" onclick="toggleStatus(${emp.id}, '${emp.status}')">
+                                ${btnText}
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+            
+            html += `
+                    </tbody>
+                </table>
+            `;
+            
+            document.getElementById('content').innerHTML = html;
+        }
+
+        function toggleStatus(id, currentStatus) {
+            const newStatus = currentStatus === 'active' ? 'inactive' : 'active';
+            const btn = document.getElementById(`btn-${id}`);
+            const statusBadge = document.getElementById(`status-${id}`);
+            
+            btn.disabled = true;
+            
+            const oldBtnClass = currentStatus === 'active' ? 'toggle-btn-active' : 'toggle-btn-inactive';
+            const newBtnClass = newStatus === 'active' ? 'toggle-btn-active' : 'toggle-btn-inactive';
+            const oldStatusClass = currentStatus === 'active' ? 'status-active' : 'status-inactive';
+            const newStatusClass = newStatus === 'active' ? 'status-active' : 'status-inactive';
+            
+            btn.classList.remove(oldBtnClass);
+            btn.classList.add(newBtnClass);
+            btn.textContent = newStatus === 'active' ? 'Deactivate' : 'Activate';
+            statusBadge.classList.remove(oldStatusClass);
+            statusBadge.classList.add(newStatusClass);
+            statusBadge.textContent = newStatus;
+            
+            const xhr = new XMLHttpRequest();
+            xhr.open('PATCH', `http://localhost:3002/employees/${id}`, true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            
+            xhr.onload = function() {
+                btn.disabled = false;
+                
+                if (xhr.status !== 200) {
+                    btn.classList.remove(newBtnClass);
+                    btn.classList.add(oldBtnClass);
+                    btn.textContent = currentStatus === 'active' ? 'Deactivate' : 'Activate';
+                    statusBadge.classList.remove(newStatusClass);
+                    statusBadge.classList.add(oldStatusClass);
+                    statusBadge.textContent = currentStatus;
+                    
+                    showError('Failed to update employee status');
+                }
+            };
+            
+            xhr.onerror = function() {
+                btn.disabled = false;
+                btn.classList.remove(newBtnClass);
+                btn.classList.add(oldBtnClass);
+                btn.textContent = currentStatus === 'active' ? 'Deactivate' : 'Activate';
+                statusBadge.classList.remove(newStatusClass);
+                statusBadge.classList.add(oldStatusClass);
+                statusBadge.textContent = currentStatus;
+                
+                showError('Network error occurred');
+            };
+            
+            xhr.send(JSON.stringify({ status: newStatus }));
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            
+            setTimeout(() => {
+                errorDiv.style.display = 'none';
+            }, 3000);
+        }
+
+        loadEmployees();
+    </script>
+</body>
+</html>

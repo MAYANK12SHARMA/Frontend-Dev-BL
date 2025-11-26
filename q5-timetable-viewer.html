@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q5 - College Timetable</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            margin-bottom: 30px;
+            color: #333;
+        }
+        .selector-section {
+            margin-bottom: 30px;
+        }
+        .selector-section label {
+            font-weight: bold;
+            margin-right: 10px;
+            color: #333;
+            font-size: 16px;
+        }
+        .selector-section select {
+            padding: 10px 15px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            min-width: 200px;
+        }
+        .timetable {
+            margin-top: 20px;
+        }
+        .class-card {
+            background: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid #4CAF50;
+            border-radius: 5px;
+        }
+        .class-subject {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .class-details {
+            display: flex;
+            gap: 30px;
+            color: #666;
+        }
+        .class-faculty,
+        .class-time {
+            display: flex;
+            align-items: center;
+        }
+        .class-faculty::before {
+            content: "👨‍🏫";
+            margin-right: 8px;
+        }
+        .class-time::before {
+            content: "🕐";
+            margin-right: 8px;
+        }
+        .no-classes {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+            font-size: 18px;
+        }
+        .loading {
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>College Timetable Viewer</h1>
+        
+        <div class="selector-section">
+            <label for="daySelect">Select Day:</label>
+            <select id="daySelect">
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+            </select>
+        </div>
+
+        <div class="timetable" id="timetable"></div>
+    </div>
+
+    <script>
+        const daySelect = document.getElementById('daySelect');
+        const timetableDiv = document.getElementById('timetable');
+
+        daySelect.addEventListener('change', loadTimetable);
+
+        function loadTimetable() {
+            const selectedDay = daySelect.value;
+            timetableDiv.innerHTML = '<div class="loading">Loading timetable...</div>';
+
+            fetch(`http://localhost:3005/timetable?day=${selectedDay}`)
+                .then(response => response.json())
+                .then(classes => {
+                    displayTimetable(classes);
+                })
+                .catch(error => {
+                    timetableDiv.innerHTML = '<div class="no-classes">Error loading timetable</div>';
+                });
+        }
+
+        function displayTimetable(classes) {
+            if (classes.length === 0) {
+                timetableDiv.innerHTML = '<div class="no-classes">No classes today.</div>';
+                return;
+            }
+
+            let html = '';
+            classes.forEach(cls => {
+                html += `
+                    <div class="class-card">
+                        <div class="class-subject">${cls.subject}</div>
+                        <div class="class-details">
+                            <div class="class-faculty">${cls.faculty}</div>
+                            <div class="class-time">${cls.time}</div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            timetableDiv.innerHTML = html;
+        }
+
+        loadTimetable();
+    </script>
+</body>
+</html>

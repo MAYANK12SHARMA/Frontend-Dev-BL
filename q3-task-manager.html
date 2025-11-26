@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q3 - Task Manager</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            margin-bottom: 30px;
+            color: #333;
+        }
+        .filter-section {
+            margin-bottom: 30px;
+        }
+        .filter-section label {
+            font-weight: bold;
+            margin-right: 10px;
+            color: #333;
+        }
+        .filter-section select {
+            padding: 10px 15px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .task-list {
+            list-style: none;
+        }
+        .task-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+        }
+        .task-item:hover {
+            background-color: #f8f9fa;
+        }
+        .task-checkbox {
+            width: 20px;
+            height: 20px;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+        .task-content {
+            flex: 1;
+        }
+        .task-title {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        .task-title.completed {
+            text-decoration: line-through;
+            color: #999;
+        }
+        .task-priority {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .priority-high {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .priority-medium {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        .priority-low {
+            background-color: #d1ecf1;
+            color: #0c5460;
+        }
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+        .no-tasks {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Task Manager</h1>
+        
+        <div class="filter-section">
+            <label for="filterSelect">Filter by:</label>
+            <select id="filterSelect">
+                <option value="">All Tasks</option>
+                <option value="high">High Priority</option>
+                <option value="medium">Medium Priority</option>
+                <option value="low">Low Priority</option>
+                <option value="completed">Completed</option>
+            </select>
+        </div>
+
+        <ul class="task-list" id="taskList"></ul>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            loadTasks();
+
+            $('#filterSelect').on('change', function() {
+                loadTasks();
+            });
+
+            $(document).on('change', '.task-checkbox', function() {
+                const taskId = $(this).data('id');
+                const isCompleted = $(this).is(':checked');
+                toggleTaskCompletion(taskId, isCompleted);
+            });
+        });
+
+        function loadTasks() {
+            const filter = $('#filterSelect').val();
+            let url = 'http://localhost:3003/tasks';
+            let params = {};
+
+            if (filter === 'completed') {
+                params.completed = true;
+            } else if (filter) {
+                params.priority = filter;
+            }
+
+            $('#taskList').html('<div class="loading">Loading tasks...</div>');
+
+            $.ajax({
+                url: url,
+                method: 'GET',
+                data: params,
+                success: function(tasks) {
+                    displayTasks(tasks);
+                },
+                error: function() {
+                    $('#taskList').html('<div class="no-tasks">Error loading tasks</div>');
+                }
+            });
+        }
+
+        function displayTasks(tasks) {
+            if (tasks.length === 0) {
+                $('#taskList').html('<div class="no-tasks">No tasks found</div>');
+                return;
+            }
+
+            let html = '';
+            tasks.forEach(function(task) {
+                const priorityClass = `priority-${task.priority}`;
+                const titleClass = task.completed ? 'completed' : '';
+                const checked = task.completed ? 'checked' : '';
+
+                html += `
+                    <li class="task-item">
+                        <input type="checkbox" class="task-checkbox" data-id="${task.id}" ${checked}>
+                        <div class="task-content">
+                            <div class="task-title ${titleClass}">${task.title}</div>
+                            <span class="task-priority ${priorityClass}">${task.priority.toUpperCase()}</span>
+                        </div>
+                    </li>
+                `;
+            });
+
+            $('#taskList').html(html);
+        }
+
+        function toggleTaskCompletion(taskId, isCompleted) {
+            const checkbox = $(`.task-checkbox[data-id="${taskId}"]`);
+            const taskTitle = checkbox.siblings('.task-content').find('.task-title');
+
+            checkbox.prop('disabled', true);
+
+            $.ajax({
+                url: `http://localhost:3003/tasks/${taskId}`,
+                method: 'PATCH',
+                contentType: 'application/json',
+                data: JSON.stringify({ completed: isCompleted }),
+                success: function() {
+                    checkbox.prop('disabled', false);
+                    if (isCompleted) {
+                        taskTitle.addClass('completed');
+                    } else {
+                        taskTitle.removeClass('completed');
+                    }
+                },
+                error: function() {
+                    checkbox.prop('disabled', false);
+                    checkbox.prop('checked', !isCompleted);
+                    alert('Failed to update task');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
