@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q5 - Team Directory</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .department {
+            margin: 30px 0;
+            padding: 20px;
+            border: 2px solid #3498db;
+            border-radius: 10px;
+        }
+        .department-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        .team-members {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .member {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .member.manager {
+            background: #3498db;
+            color: white;
+            font-weight: bold;
+        }
+        .member.highlighted {
+            background: #ffe6e6;
+            border-color: #ff6b6b;
+        }
+        .member.sibling-highlight {
+            background: #fff3cd;
+            border-color: #ffc107;
+        }
+        .contact-info {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px 5px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background: #3498db;
+            color: white;
+        }
+        button:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Team Directory</h1>
+    <button id="randomEmployee">Highlight Random Employee Siblings</button>
+    <button id="toggleTeams">Toggle All Teams</button>
+
+    <div class="department" data-dept="engineering">
+        <div class="department-name">Engineering Department</div>
+        <div class="team-members">
+            <div class="member manager" data-role="manager">John Smith (Manager)</div>
+            <div class="member" data-report-to="manager">Alice Johnson<div class="contact-info">alice@company.com | ext: 1234</div></div>
+            <div class="member" data-report-to="manager">Bob Williams<div class="contact-info">bob@company.com | ext: 1235</div></div>
+            <div class="member" data-report-to="manager">Carol Davis<div class="contact-info">carol@company.com | ext: 1236</div></div>
+            <div class="member" data-report-to="manager">David Miller<div class="contact-info">david@company.com | ext: 1237</div></div>
+        </div>
+    </div>
+
+    <div class="department" data-dept="marketing">
+        <div class="department-name">Marketing Department</div>
+        <div class="team-members">
+            <div class="member manager" data-role="manager">Sarah Brown (Manager)</div>
+            <div class="member" data-report-to="manager">Emma Wilson<div class="contact-info">emma@company.com | ext: 2234</div></div>
+            <div class="member" data-report-to="manager">Frank Moore<div class="contact-info">frank@company.com | ext: 2235</div></div>
+            <div class="member" data-report-to="manager">Grace Taylor<div class="contact-info">grace@company.com | ext: 2236</div></div>
+            <div class="member" data-report-to="manager">Henry Anderson<div class="contact-info">henry@company.com | ext: 2237</div></div>
+        </div>
+    </div>
+
+    <script src="Q5_TeamDirectory.js"></script>
+</body>
+</html>

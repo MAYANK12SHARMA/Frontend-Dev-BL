@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q6 - Event Subscription</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .subscription-panel {
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .topic {
+            padding: 15px;
+            margin: 10px 0;
+            background: #ecf0f1;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .topic:hover {
+            background: #d5dbdb;
+        }
+        .topic.subscribed {
+            background: #d4edda;
+            border-left: 5px solid #28a745;
+        }
+        .topic.unsubscribed {
+            background: #f8d7da;
+            border-left: 5px solid #dc3545;
+        }
+        button {
+            padding: 8px 16px;
+            margin: 0 5px;
+            font-size: 14px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+        .subscribe-btn {
+            background: #28a745;
+            color: white;
+        }
+        .unsubscribe-btn {
+            background: #dc3545;
+            color: white;
+        }
+        .remove-btn {
+            background: #6c757d;
+            color: white;
+        }
+        .add-topic {
+            margin: 20px 0;
+        }
+        .add-topic input {
+            padding: 10px;
+            width: 60%;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+        }
+        .add-topic button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background: #3498db;
+            color: white;
+        }
+        #message {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        #message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+    </style>
+</head>
+<body>
+    <h1>Event Subscription Panel</h1>
+    
+    <div class="add-topic">
+        <input type="text" id="newTopic" placeholder="Enter new subscription topic...">
+        <button id="addTopicBtn">Add Topic</button>
+    </div>
+
+    <div id="message"></div>
+
+    <div class="subscription-panel">
+        <div class="topic" data-topic="newsletters">
+            <span>Newsletter Updates</span>
+            <div>
+                <button class="subscribe-btn">Subscribe</button>
+                <button class="unsubscribe-btn">Unsubscribe</button>
+                <button class="remove-btn">Remove</button>
+            </div>
+        </div>
+        <div class="topic" data-topic="promotions">
+            <span>Promotional Offers</span>
+            <div>
+                <button class="subscribe-btn">Subscribe</button>
+                <button class="unsubscribe-btn">Unsubscribe</button>
+                <button class="remove-btn">Remove</button>
+            </div>
+        </div>
+        <div class="topic" data-topic="events">
+            <span>Event Notifications</span>
+            <div>
+                <button class="subscribe-btn">Subscribe</button>
+                <button class="unsubscribe-btn">Unsubscribe</button>
+                <button class="remove-btn">Remove</button>
+            </div>
+        </div>
+        <div class="topic" data-topic="updates">
+            <span>Product Updates</span>
+            <div>
+                <button class="subscribe-btn">Subscribe</button>
+                <button class="unsubscribe-btn">Unsubscribe</button>
+                <button class="remove-btn">Remove</button>
+            </div>
+        </div>
+        <div class="topic" data-topic="blog">
+            <span>Blog Posts</span>
+            <div>
+                <button class="subscribe-btn">Subscribe</button>
+                <button class="unsubscribe-btn">Unsubscribe</button>
+                <button class="remove-btn">Remove</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="Q6_EventSubscription.js"></script>
+</body>
+</html>

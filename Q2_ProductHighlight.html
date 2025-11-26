@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q2 - Product Highlight</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .product {
+            border: 2px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .product.highlighted {
+            background: #ffe6e6;
+            border-color: #ff6b6b;
+        }
+        .product.selected {
+            border-color: #ffd43b;
+            box-shadow: 0 0 10px rgba(255, 212, 59, 0.5);
+        }
+        .product[data-discount="true"] {
+            background: #d4edda;
+        }
+        .product-details {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .favorite {
+            float: right;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        .favorite.active {
+            color: #ff6b6b;
+        }
+        h3 {
+            margin: 10px 0;
+        }
+        .price {
+            font-size: 20px;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Product Catalog</h1>
+    <div class="products">
+        <div class="product" data-stock="true" data-discount="false">
+            <span class="favorite">♡</span>
+            <h3>Laptop</h3>
+            <p class="price">$999</p>
+            <div class="product-details">15.6" Display, 8GB RAM, 512GB SSD</div>
+        </div>
+        <div class="product" data-stock="true" data-discount="true">
+            <span class="favorite">♡</span>
+            <h3>Smartphone</h3>
+            <p class="price">$699</p>
+            <div class="product-details">6.5" AMOLED, 128GB, Dual Camera</div>
+        </div>
+        <div class="product" data-stock="false" data-discount="false">
+            <span class="favorite">♡</span>
+            <h3>Headphones</h3>
+            <p class="price">$199</p>
+            <div class="product-details">Wireless, Noise Cancelling, 30hr Battery</div>
+        </div>
+        <div class="product" data-stock="true" data-discount="true">
+            <span class="favorite">♡</span>
+            <h3>Tablet</h3>
+            <p class="price">$449</p>
+            <div class="product-details">10" Display, 64GB, 4G LTE</div>
+        </div>
+        <div class="product" data-stock="true" data-discount="false">
+            <span class="favorite">♡</span>
+            <h3>Smartwatch</h3>
+            <p class="price">$299</p>
+            <div class="product-details">Heart Rate Monitor, GPS, Waterproof</div>
+        </div>
+    </div>
+    <script src="Q2_ProductHighlight.js"></script>
+</body>
+</html>

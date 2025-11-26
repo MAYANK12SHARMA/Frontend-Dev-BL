@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q3 - Interactive FAQ</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .faq-item {
+            margin: 15px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .question {
+            padding: 20px;
+            background: #3498db;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .question:hover {
+            background: #2980b9;
+        }
+        .question.highlighted {
+            background: #e74c3c;
+        }
+        .answer {
+            padding: 20px;
+            background: #ecf0f1;
+            display: none;
+        }
+        .answer input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .answer input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <h1>Frequently Asked Questions</h1>
+    <div class="faq-container">
+        <div class="faq-item">
+            <div class="question">What is jQuery?</div>
+            <div class="answer">
+                jQuery is a fast, small, and feature-rich JavaScript library.
+                <input type="text" placeholder="Your feedback...">
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="question">How do I install jQuery?</div>
+            <div class="answer">
+                You can include jQuery via CDN or download it from the official website.
+                <input type="text" placeholder="Your feedback...">
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="question">What are jQuery selectors?</div>
+            <div class="answer">
+                jQuery selectors allow you to select and manipulate HTML elements.
+                <input type="text" placeholder="Your feedback...">
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="question">What is event delegation?</div>
+            <div class="answer">
+                Event delegation allows handling events on multiple elements efficiently.
+                <input type="text" placeholder="Your feedback...">
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="question">How do I animate with jQuery?</div>
+            <div class="answer">
+                jQuery provides methods like .animate(), .fadeIn(), .slideDown() etc.
+                <input type="text" placeholder="Your feedback...">
+            </div>
+        </div>
+    </div>
+    <script src="Q3_InteractiveFAQ.js"></script>
+</body>
+</html>
